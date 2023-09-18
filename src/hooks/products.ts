@@ -7,15 +7,12 @@ export function useProducts() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    console.log("useProduct func")
 
     function addProduct(product: IProduct) {
         setProducts(prev => [...prev, product])
-        console.log("addProduct func")
     }
 
     async function fetchProducts() {
-        console.log("fetchProducts func")
         try {
             setError('')
             setLoading(true)

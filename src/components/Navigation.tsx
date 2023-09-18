@@ -1,4 +1,6 @@
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import navigationStyles from '../assets/navigation.module.css'
+import {AuthComponent} from "./AuthComponent";
 
 export function Navigation() {
     return (
@@ -8,8 +10,11 @@ export function Navigation() {
             </span>
 
             <span>
-                <Link className="px-5" to="/">Products</Link>
-                <Link className="px-5" to="/about">About</Link>
+                <AuthComponent />
+                <NavLink className={({isActive, isPending}) =>
+                    isPending ? "px-5 pending" : isActive ? "px-5 " + (navigationStyles.active) : "px-5"} to="/">Products</NavLink>
+                <NavLink className={({isActive, isPending}) =>
+                    isPending ? "px-5 pending" : isActive ? "px-5 " + (navigationStyles.active) : "px-5"} to="/about">About</NavLink>
             </span>
         </nav>
     )
