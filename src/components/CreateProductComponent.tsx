@@ -1,25 +1,13 @@
 import React, {useState} from "react";
 import {IProduct, IProductData} from "../models";
 import axios from "axios";
-import {ErrorMessage} from "./ErrorMessage";
-
-const productData: IProductData = {
-    title: '',
-    price: 13.5,
-    description: 'lorem ipsum set',
-    image: 'https://i.pravatar.cc',
-    category: 'electronic',
-    rating: {
-        rate: 52,
-        count: 10
-    }
-}
+import {ErrorMessageComponent} from "./ErrorMessageComponent";
 
 interface CreateProductProps {
     onCreateProduct: (product: IProduct) => void
 }
 
-export function CreateProduct({onCreateProduct}: CreateProductProps) {
+export function CreateProductComponent({onCreateProduct}: CreateProductProps) {
     const [productData, setProductData] = useState({
         title: '',
         price: 0,
@@ -106,7 +94,7 @@ export function CreateProduct({onCreateProduct}: CreateProductProps) {
                    }
             />
 
-            {error && <ErrorMessage error={error}/>}
+            {error && <ErrorMessageComponent error={error}/>}
             <button type="submit" className="py-2 px-4 border bg-yellow-400 hover:text-white">Create</button>
         </form>
     )

@@ -1,14 +1,14 @@
 import {observer} from "mobx-react-lite";
-import AuthStore from "../stores/AuthStore";
+import {useAuthContext} from "../context/AuthContext";
 
 export const AuthComponent = observer(() => {
 
-    const {login, logout, user, role} = AuthStore;
+    const {login, logout, user, role} = useAuthContext();
 
     return (
         <div>
             {!user ?
-                <div><button onClick={() => login('hello', 'admin')}>Login</button></div>
+                <div><button onClick={() => login('Jahimees', 'admin')}>Login</button></div>
                 :
                 <div><button onClick={() => logout()}>Logout</button></div>
             }

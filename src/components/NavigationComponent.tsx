@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 import navigationStyles from '../assets/navigation.module.css'
 import {AuthComponent} from "./AuthComponent";
 
-export function Navigation() {
+export function NavigationComponent() {
     return (
         <nav className="h-[50px] flex justify-between items-center px-5 bg-gray-500 text-white">
             <span className="font-bold">

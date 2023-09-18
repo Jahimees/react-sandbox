@@ -1,5 +1,5 @@
 import React from "react";
 
-export function Loader() {
+export function LoaderComponent() {
     return (<p className="text-center">Loading...</p>)
 }

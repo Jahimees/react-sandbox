@@ -1,13 +1,15 @@
 import {createContext, ReactNode, useState} from "react";
 
 interface IModalContext {
-    modal: boolean
+    modal: boolean,
+    // childId: number,
     open: () => void
     close: () => void
 }
 
 export const ModalContext = createContext<IModalContext>({
     modal: false,
+    // childId: 0,
     open: () => {
     },
     close: () => {

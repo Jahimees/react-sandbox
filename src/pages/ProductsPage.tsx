@@ -1,14 +1,15 @@
-import {useProducts} from "../hooks/products";
-import {useContext} from "react";
+import {useProducts} from "../hooks/productsHooks";
+import React, {useContext, useState} from "react";
 import {ModalContext} from "../context/ModalContext";
 import {IProduct} from "../models";
-import {Loader} from "../components/Loader";
-import {ErrorMessage} from "../components/ErrorMessage";
-import {Product} from "../components/Product";
-import {Modal} from "../components/Modal";
-import {CreateProduct} from "../components/CreateProduct";
+import {LoaderComponent} from "../components/LoaderComponent";
+import {ErrorMessageComponent} from "../components/ErrorMessageComponent";
+import {ProductComponent} from "../components/ProductComponent";
+import {ModalComponent} from "../components/ModalComponent";
+import {CreateProductComponent} from "../components/CreateProductComponent";
 import {observer} from "mobx-react-lite";
 import {useAuthContext} from "../context/AuthContext";
+import {ChangeProductComponent} from "../components/ChangeProductComponent";
 
 export const ProductsPage = observer(() => {
     const {loading, error, products, addProduct} = useProducts()
@@ -25,19 +26,21 @@ export const ProductsPage = observer(() => {
     return (
         <div className="container mx-auto max-w-2xl pt-5">
 
-            {loading && <Loader/>}
-            {error && <ErrorMessage error={error}/>}
-            {products?.map((product: IProduct) => <Product key={product.id} product={product}/>)}
-
-            {modal && <Modal title="Create new product" onCloseModal={close}>
+            {loading && <LoaderComponent/>}
+            {error && <ErrorMessageComponent error={error}/>}
+            {products?.map((product: IProduct) => <ProductComponent key={product.id} product={product}/>)}
+            {modal && <ModalComponent title="Create new product" onCloseModal={close}>
                 {/*// setModal(false)}>*/}
-                <CreateProduct onCreateProduct={createHandler}/>
-            </Modal>}
+                <CreateProductComponent onCreateProduct={createHandler}/>
+            </ModalComponent>}
+
+            {/*{modal === 'change' && <ModalComponent title="Update product" onCloseModal={close}>*/}
+            {/*    <ChangeProductComponent product={undefined} onChangeProduct={close}/>*/}
+            {/*</ModalComponent>}*/}
             {user ?
             <button className="fixed bottom-5 right-5 rounded-full bg-red-400 text-white text-2xl+ px-4 py-2"
                     onClick={open}>+
             </button> : ''}
-            {/*// setModal(true)}>*/}
         </div>
     )
 })

@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {IProduct} from "../models";
+import {ModalComponent} from "./ModalComponent";
+import {ChangeProductComponent} from "./ChangeProductComponent";
+import {ModalContext} from "../context/ModalContext";
 
 interface ProductProps {
     product: IProduct
 }
 
-export function Product({product}: ProductProps) {
+export function ProductComponent({product}: ProductProps) {
     const [details, setDetails] = useState(false)
-
     const btnBgClassName = details ? 'bg-yellow-400' : 'bg-blue-400'
 
     const btnClasses = ['py-2 px-4 border', btnBgClassName]
@@ -31,7 +33,6 @@ export function Product({product}: ProductProps) {
                 </div>
             }
             {/*<p>{product.description}</p>*/}
-
         </div>
     )
 }

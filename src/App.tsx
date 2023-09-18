@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import {ProductsPage} from "./pages/ProductsPage";
 import {AboutPage} from "./pages/AboutPage";
-import {Navigation} from "./components/Navigation";
+import {NavigationComponent} from "./components/NavigationComponent";
 import {AuthContextProvider} from "./context/AuthContext";
 
 // const AuthContext = useAuthContext();
@@ -10,7 +10,7 @@ import {AuthContextProvider} from "./context/AuthContext";
 function App() {
     return (
         <AuthContextProvider>
-            <Navigation/>
+            <NavigationComponent/>
             <Routes>
                 <Route path="/" element={<ProductsPage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
